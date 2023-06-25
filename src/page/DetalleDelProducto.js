@@ -24,8 +24,6 @@ export default function DetalleDelProducto(props) {
 
   useEffect(() => {
     if (prendaDispatch !== undefined) {
-        
-      
       if (prendaDispatch.id !== 0) {
         let prendaNueva = new Prenda();
         prendaNueva.id = prendaDispatch.id;
@@ -35,7 +33,7 @@ export default function DetalleDelProducto(props) {
         prendaNueva.descripcion = prendaDispatch.descripcion;
         prendaNueva.foto = prendaDispatch.foto;
         setPrenda(prendaNueva);
-        console.log(prenda)
+        console.log(prenda);
       }
     }
   }, [prendaDispatch]);
@@ -54,18 +52,22 @@ export default function DetalleDelProducto(props) {
         sx={{ width: "100%", height: "100%" }}
       >
         <Grid
+          display={"grid"}
           container
           sx={{ width: "70%", height: 550 }}
           textAlign="center"
           marginTop={5}
         >
-          <FontAwesomeIcon
-            icon={faCircleArrowLeft}
-            size={"2x"}
-            color={"#1E90FF"}
-            style={{ cursor: "pointer" }}
-            onClick={onClickVolver}
-          />
+          <Grid textAlign={"left"} pb={2}>
+            <FontAwesomeIcon
+              icon={faCircleArrowLeft}
+              size={"2x"}
+              color={"#1E90FF"}
+              style={{ cursor: "pointer" }}
+              onClick={onClickVolver}
+            />
+          </Grid>
+
           <CartaDeDetalle
             nombre={prenda.nombre}
             talle={prenda.talle}
