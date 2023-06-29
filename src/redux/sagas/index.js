@@ -1,7 +1,7 @@
 import { all } from "redux-saga/effects";
 
-import PrendaSaga from "./PrendaSaga";
+import ClothesSaga from "./ClothesSaga";
 
 export default function* rootSaga() {
-  yield all([PrendaSaga()]);
+  yield all([ClothesSaga()]);
 }

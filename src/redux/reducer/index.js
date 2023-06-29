@@ -1,9 +1,9 @@
 import { combineReducers } from "redux";
 
-import { prendaReducers } from "./prendaReducers";
+import { clothesReducers } from "./clothesReducers";
 
 const rootReducer = combineReducers({
-    prendaReducers: prendaReducers,
+  clothesReducers: clothesReducers,
 });
 
 export default rootReducer;

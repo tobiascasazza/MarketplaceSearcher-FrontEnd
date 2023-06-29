@@ -1,5 +1,5 @@
 import React from "react";
-import BuscarProducto from "../Components/BuscarProducto";
+import SearchProduct from "./SearchProduct";
 import { useParams } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import useStyles from "../styles/styles";
 
-export default function CartaDeDetalle(props) {
+export default function DetailCard(props) {
   return (
     <>
       <Grid>
@@ -24,14 +24,14 @@ export default function CartaDeDetalle(props) {
           <Grid container>
             <Grid item marginLeft={5}>
               <Typography variant="h6">
-                <b>{props.nombre}</b>
+                <b>{props.name}</b>
               </Typography>
               <Typography
                 varian="body2"
                 color="text.secondary"
                 textAlign={"left"}
               >
-                Talle: {props.talle}
+                Size: {props.size}
               </Typography>
             </Grid>
           </Grid>
@@ -41,8 +41,8 @@ export default function CartaDeDetalle(props) {
               <CardMedia
                 component="img"
                 height="500"
-                src={props.foto}
-                alt="Imagen de prenda"
+                src={props.photo}
+                alt="image de clothes"
               />
             </Grid>
             <Grid
@@ -54,10 +54,10 @@ export default function CartaDeDetalle(props) {
             >
               <CardContent>
                 <Typography variant="h6" textAlign={"left"}>
-                  <b>Descripcion</b>
+                  <b>Description</b>
                 </Typography>
                 <Typography variant="body2" textAlign={"left"}>
-                  {props.descripcion}
+                  {props.description}
                 </Typography>
                 <Typography
                   variant="body2"
@@ -65,7 +65,7 @@ export default function CartaDeDetalle(props) {
                   color="text.secondary"
                   marginTop={1}
                 >
-                  Precio: ${props.precio}
+                  Price: ${props.price}
                 </Typography>
                 <Grid marginTop={5}>
                   <Button
@@ -73,7 +73,7 @@ export default function CartaDeDetalle(props) {
                     startIcon={<ShoppingCartIcon />}
                     sx={{ width: 250 }}
                   >
-                    Comprar
+                    Buy
                   </Button>
                 </Grid>
               </CardContent>

@@ -1,9 +1,9 @@
 import "../src/styles/App.css";
 import { Route, Switch, Router } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import DetalleDelProducto from "./page/DetalleDelProducto";
-import ResultadoBusqueda from "./page/ResultadoBusqueda";
-import Inicio from "./page/Inicio";
+import ProductDetail from "./page/ProductDetail";
+import SearchResult from "./page/SearchResult";
+import Home from "./page/Home";
 import { Provider } from "react-redux";
 
 function App(props) {
@@ -13,9 +13,9 @@ function App(props) {
       <Router history={history}>
         <div className="App">
           <Switch>
-            <Route component={DetalleDelProducto} exact path="/items/:id" />
-            <Route component={ResultadoBusqueda} path="/items" exact />
-            <Route component={Inicio} path="/" exact />
+            <Route component={ProductDetail} exact path="/items/:id" />
+            <Route component={SearchResult} path="/items" exact />
+            <Route component={Home} path="/" exact />
           </Switch>
         </div>
       </Router>

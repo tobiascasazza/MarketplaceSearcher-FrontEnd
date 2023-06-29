@@ -1,49 +1,50 @@
 import React, { useEffect, useState } from "react";
-import BuscarProducto from "../Components/BuscarProducto";
+import SearchProduct from "../Components/SearchProduct";
 import { useParams } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons";
-
+import { Clothes } from "../Models/Clothes.tsx";
 import { Grid } from "@mui/material";
-import CartaDeDetalle from "../Components/CartaDeDetalle";
+import DetailCard from "../Components/DetailCard";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getPrendaPorId } from "../redux/action/actionPrendas";
-import { Prenda } from "../Models/Prenda.tsx";
+import { getClothesById } from "../redux/action/actionClothes";
 
-export default function DetalleDelProducto(props) {
+export default function ProductDetail(props) {
   const params = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
-  const prendaDispatch = useSelector((state) => state.prendaReducers?.prenda);
-  const [prenda, setPrenda] = useState(new Prenda(0, "", "", 0, "", ""));
+  const clothesDispatch = useSelector(
+    (state) => state.clothesReducers?.clothes
+  );
+  const [clothes, setClothes] = useState(new Clothes(0, "", "", 0, "", ""));
 
   useEffect(() => {
-    dispatch(getPrendaPorId(params.id));
+    dispatch(getClothesById(params.id));
   }, []);
 
   useEffect(() => {
-    if (prendaDispatch !== undefined) {
-      if (prendaDispatch.id !== 0) {
-        let prendaNueva = new Prenda();
-        prendaNueva.id = prendaDispatch.id;
-        prendaNueva.nombre = prendaDispatch.nombre;
-        prendaNueva.talle = prendaDispatch.talle;
-        prendaNueva.precio = prendaDispatch.precio;
-        prendaNueva.descripcion = prendaDispatch.descripcion;
-        prendaNueva.foto = prendaDispatch.foto;
-        setPrenda(prendaNueva);
-        console.log(prenda);
+    if (clothesDispatch !== undefined) {
+      if (clothesDispatch.id !== 0) {
+        let clothesNueva = new Clothes();
+        clothesNueva.id = clothesDispatch.id;
+        clothesNueva.name = clothesDispatch.name;
+        clothesNueva.size = clothesDispatch.size;
+        clothesNueva.price = clothesDispatch.price;
+        clothesNueva.description = clothesDispatch.description;
+        clothesNueva.photo = clothesDispatch.photo;
+        setClothes(clothesNueva);
+        console.log(clothes);
       }
     }
-  }, [prendaDispatch]);
+  }, [clothesDispatch]);
 
   const onClickVolver = () => {
     history.goBack();
   };
   return (
     <>
-      <BuscarProducto />
+      <SearchProduct />
       <Grid
         container
         direction="column"
@@ -68,12 +69,12 @@ export default function DetalleDelProducto(props) {
             />
           </Grid>
 
-          <CartaDeDetalle
-            nombre={prenda.nombre}
-            talle={prenda.talle}
-            precio={prenda.precio}
-            descripcion={prenda.descripcion}
-            foto={prenda.foto}
+          <DetailCard
+            name={clothes.name}
+            size={clothes.size}
+            price={clothes.price}
+            description={clothes.description}
+            photo={clothes.photo}
           />
         </Grid>
       </Grid>

@@ -4,7 +4,6 @@ import {
   CardActions,
   CardContent,
   CardMedia,
-  Button,
   Typography,
   Grid,
   Box,
@@ -12,11 +11,11 @@ import {
 import useStyles from "../styles/styles";
 import { useHistory } from "react-router-dom";
 
-export default function CartaDeBusqueda(props) {
+export default function SearchCard(props) {
   const classes = useStyles();
   const history = useHistory();
 
-  const OnClickVerDetalle = () => {
+  const OnClickVerDetail = () => {
     history.push(`items/${props.id}`);
   };
 
@@ -25,39 +24,39 @@ export default function CartaDeBusqueda(props) {
       <Card sx={{ width: 1000, height: 350 }}>
         <Grid container>
           <Grid item pl={1} pt={1}>
-            <Typography variant="h5">{props.nombre}</Typography>
+            <Typography variant="h5">{props.name}</Typography>
             <Typography
               varian="body2"
               color="text.secondary"
               textAlign={"left"}
             >
-              Talle: {props.talle} - ${props.precio}
+              Size: {props.size} - ${props.price}
             </Typography>
           </Grid>
           <Grid item marginLeft={"80%"}>
             <CardMedia
               component="img"
               height="140"
-              src={props.foto}
-              alt="Imagen de prenda"
+              src={props.photo}
+              alt="image de clothes"
             />
           </Grid>
         </Grid>
 
         <CardContent>
           <Typography variant="body2" color="text.secondary" textAlign={"left"}>
-            {props.descripcion}
+            {props.description}
           </Typography>
         </CardContent>
         <CardActions>
-          <Box onClick={OnClickVerDetalle}>
+          <Box onClick={OnClickVerDetail}>
             <Typography
               variant="body2"
               textAlign={"left"}
               className={classes.noBoton}
               pl={1}
             >
-              <b>Ver Detalle</b>
+              <b>View Detail</b>
             </Typography>
           </Box>
         </CardActions>

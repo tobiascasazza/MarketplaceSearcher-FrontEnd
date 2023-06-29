@@ -12,9 +12,9 @@ import { blue } from "@mui/material/colors";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/system";
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom";
 
-export default function BuscarProducto() {
+export default function SearchProduct() {
   const classes = useStyles();
   const [buscar, setBuscar] = useState("");
   const history = useHistory();
@@ -23,17 +23,17 @@ export default function BuscarProducto() {
     setBuscar(event.target.value);
   };
 
-  const onClickBuscar = () =>{
-    history.replace("/")
-    history.push(`items?search=${buscar}`)
-  }
+  const onClickBuscar = () => {
+    history.replace("/");
+    history.push(`items?search=${buscar}`);
+  };
 
   const Enter = (e) => {
-    if(e.keyCode == 13){
-      history.replace("/")
-      history.push(`items?search=${buscar}`)
-   }
-  }
+    if (e.keyCode == 13) {
+      history.replace("/");
+      history.push(`items?search=${buscar}`);
+    }
+  };
   return (
     <>
       <Toolbar

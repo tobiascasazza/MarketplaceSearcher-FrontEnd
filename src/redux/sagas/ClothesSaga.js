@@ -1,12 +1,12 @@
 import { call, put, takeLatest } from "redux-saga/effects";
 
 import * as actionTypes from "../consts/actionTypes";
-import * as API from "../api/PrendaApi";
+import * as API from "../api/ClothesApi";
 
-function* asyncGetPrendaPorId({ payload }) {
+function* asyncGetClothesById({ payload }) {
   try {
     //data is obtained after axios call is resolved
-    var response = yield call(API.getPrendaPorId, payload);
+    var response = yield call(API.getClothesById, payload);
 
     if (response) {
       //dispatch action to change redux state
@@ -22,10 +22,10 @@ function* asyncGetPrendaPorId({ payload }) {
     });
   }
 }
-function* asyncGetPrendaPorNombre({ payload }) {
+function* asyncGetClothesByName({ payload }) {
   try {
     //data is obtained after axios call is resolved
-    var response = yield call(API.getPrendaPorNombre, payload);
+    var response = yield call(API.getClothesByName, payload);
 
     if (response) {
       //dispatch action to change redux state
@@ -42,8 +42,7 @@ function* asyncGetPrendaPorNombre({ payload }) {
   }
 }
 
-
-export default function* PrendaSaga() {
-  yield takeLatest(actionTypes.GET_PRENDAPORID, asyncGetPrendaPorId);
-  yield takeLatest(actionTypes.GET_PRENDAPORNOMBRE, asyncGetPrendaPorNombre);
+export default function* ClothesSaga() {
+  yield takeLatest(actionTypes.GET_PRENDAPORID, asyncGetClothesById);
+  yield takeLatest(actionTypes.GET_PRENDAPORNOMBRE, asyncGetClothesByName);
 }
