@@ -51,7 +51,7 @@ export default function SearchProduct() {
         >
           <TextField
             variant="standard"
-            label="Search product"
+            label="Search"
             className={classes.searcher}
             value={buscar}
             sx={{ width: "30%" }}
